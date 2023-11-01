@@ -61,9 +61,12 @@
         </address>
       </div>
     </header>
+
     <!-- MAIN CONTENT -->
+
     <main>
       <!-- Section HERO -->
+
       <section class="section-hero">
         <div class="container">
           <h1 class="section-hero-title">
@@ -72,7 +75,9 @@
           <button class="btn" type="button">Order Service</button>
         </div>
       </section>
+
       <!-- Section 1 -->
+
       <section class="section-one-caption">
         <div class="container">
           <h2 class="section-one-title visually-hidden">Прихований текст</h2>
@@ -138,7 +143,9 @@
           </ul>
         </div>
       </section>
+
       <!-- Section 2 Our Team -->
+
       <section class="section-two-caption">
         <div class="container">
           <h2 class="section-two-title">Our Team</h2>
@@ -306,7 +313,9 @@
           </ul>
         </div>
       </section>
+
       <!-- Section 3 Our Portfolio -->
+
       <section class="section-three-caption">
         <div class="container">
           <h2 class="section-three-title">Our Portfolio</h2>
@@ -435,7 +444,9 @@
         </div>
       </section>
     </main>
+
     <!-- FOOTER -->
+
     <footer class="footer">
       <div class="container container-holder">
         <div class="footer-logo">
@@ -481,7 +492,7 @@
           <form class="footer-form">
             <label class="footer-label">
               <input
-                class="footer-input"
+                class="footer-input footer-input-email"
                 type="email"
                 name="footer-email"
                 placeholder="E-mail"
@@ -490,12 +501,49 @@
             <button class="footer-subscribe-button" type="submit">
               Subscribe
               <svg class="footer-subscribe-icon" width="24" height="20">
-                <use href="./images/icons-two.svg#icon-Frame-3"></use>
+                <use href="./images/icons.svg#icon-Frame-3"></use>
               </svg>
             </button>
           </form>
         </div>
       </div>
     </footer>
+
+    <!-- MODAL -->
+
+    <div class="container">
+      <form class="contact-form">
+        <p class="contact-form-title">
+          Leave your contacts and we will call you back
+        </p>
+        <label class="contact-form-menu-label"
+          >Name
+          <input class="contact-form-input" type="text" name="user_name" />
+        </label>
+        <label class="contact-form-menu-label"
+          >Phone
+          <input
+            class="contact-form-input"
+            type="tel"
+            name="user_phone_number"
+          />
+        </label>
+        <label class="contact-form-menu-label"
+          >Email
+          <input class="contact-form-input" type="email" name="user_email" />
+        </label>
+        <label class="contact-form-menu-comment">Comment</label>
+        <textarea
+          class="contact-form-comment"
+          name="user_comment"
+          placeholder="Text input"
+        ></textarea>
+        <div class="contact-form-btn-wrap">
+          <button class="contact-form-btn contact-form-btn-text" type="submit">
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
