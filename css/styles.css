@@ -585,8 +585,9 @@ p {
   height: 100%;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 250ms linear, visibility 250ms linear;
-  background: rgba(46, 47, 66, 0.4);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(46, 47, 66, 0.4);
 }
 
 .backdrop.is-open {
@@ -597,28 +598,58 @@ p {
 /* ==================== MODAL WINDOW STYLES ==================== */
 .modal {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 408px;
   min-height: 584px;
-  padding: 24px;
+  top: 50%;
+  left: 50%;
+  padding-top: 72px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
   border-radius: 4px;
-  background-color: #fcfcfc;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  background: #fcfcfc;
 }
 
 .modal-close-btn {
+  display: flex;
   position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
   top: 24px;
   right: 24px;
-  border: 2px;
-  background-color: transparent;
+  border-radius: 50%;
   padding: 0px;
   line-height: 0;
-  stroke: rgba(0, 0, 0, 0.1);
-  transition: stroke 250ms linear;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #e7e9fc;
 }
 
+.modal-close-btn:hover {
+  border: none;
+}
+
+.modal-close-btn:focus {
+  border: none;
+  background-color: #404bbf;
+}
+
+.modal-close-btn-icon {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal .modal-close-btn:hover,
+.modal .modal-close-btn:focus {
+  fill: #ffffff;
+}
+/* ==================== REVIEW FORM STYLES ==================== */
 .review-form-description {
   text-align: center;
   width: 360px;
@@ -635,122 +666,130 @@ p {
   margin-bottom: 8px;
 }
 
-/* .modal-close-btn:hover,
-.modal-close-btn:focus {
-  stroke: #fd9222;
-}
-
-/* ============== /MODAL WINDOW STYLES ============== */
-
-/* ============== REVIEW FORM STYLES ============== */
 .review-form-field-label {
   display: block;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: rgba(64, 64, 64, 0.3);
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
   margin-bottom: 4px;
+  color: #8e8f99;
 }
 
-/* .review-form-input-wrapper {
+.review-form-input-wrapper {
   position: relative;
 }
 
 .review-form-field {
   width: 100%;
-  height: 68px;
-  border-radius: 13px;
-  border: 1px solid rgba(17, 17, 17, 0.05);
-  padding-left: 62px;
-  transition: border-color 250ms linear;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  background-color: transparent;
+  padding-left: 38px;
+  outline: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .review-form-field:focus {
-  border-color: #fd9222;
+  border-color: #4d5ae5;
   outline-color: transparent;
-  outline-offset: 4px;
-} */
+}
 
-/* .review-form-field-icon {
+.review-form-field-icon {
   position: absolute;
   top: 50%;
   left: 16px;
-  transform: translateY(-50%); */
-/* fill: none;
-  stroke: #111111;
-  transition: stroke 250ms linear; */
-
-/* .review-form-field:focus + .review-form-field-icon {
-  stroke: #fd9222;
-} */
-
-/* .review-form-message {
-  width: 100%;
-  height: 137px;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  border-radius: 13px;
-  border: 1px solid rgba(17, 17, 17, 0.05);
-  resize: none;
-  padding: 22px 24px;
-  color: rgba(64, 64, 64, 0.3);
-  transition: border-color 250ms linear;
+  transform: translateY(-50%);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.review-form-message::placeholder {
-  color: rgba(64, 64, 64, 0.3);
+.review-form-field:focus + .review-form-field-icon {
+  fill: #4d5ae5;
+}
+
+.review-form-field-wrapper-comment {
+  margin-bottom: 16px;
+}
+
+.review-form-message {
+  width: 100%;
+  height: 120px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  padding: 8px 16px;
+  resize: none;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  background-color: transparent;
+  color: rgba(46, 47, 66, 0.4);
+  outline: transparent;
 }
 
 .review-form-message:focus {
-  border-color: #fd9222;
-  outline-color: transparent;
-  outline-offset: 4px;
+  border-color: #4d5ae5;
 }
 
 .review-form-checkbox-wrapper {
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .review-form-checkbox-label {
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 1.17;
   font-weight: 400;
-  letter-spacing: -0.02em;
-  color: rgba(64, 64, 64, 0.6);
+  letter-spacing: 0.04em;
+  color: #8e8f99;
 }
 
 .review-form-own-checkbox {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
-  border: 1px solid rgba(17, 17, 17, 0.14);
-  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 2px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   fill: transparent;
-  margin-right: 12px;
 }
 
 .review-form-checkbox:checked
   + .review-form-checkbox-label
   .review-form-own-checkbox {
-  background-color: #fd9222;
-  fill: #ffffff;
+  background-color: #404bbf;
 }
 
-.review-form-checkbox:focus
-  + .review-form-checkbox-label
-  .review-form-own-checkbox {
-  outline: 2px solid rgba(0, 0, 255, 0.5);
+.review-form-checkbox:checked {
+  border: none;
 }
 
-/* ============== /REVIEW FORM STYLES ============== */
+.review-form-checkbox:checked + .review-form-own-checkbox {
+  fill: #f4f4fd;
+}
+
+.accent-color {
+  color: #4d5ae5;
+}
 
 .review-form-btn {
-  width: 169px;
+  display: block;
+  font-family: "Roboto", sans-serif;
+  min-width: 169px;
   height: 56px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #ffffff;
   border-radius: 4px;
-  background: #4d5ae5;
+  background-color: #4d5ae5;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
 }
